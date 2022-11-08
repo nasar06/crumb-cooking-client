@@ -1,20 +1,21 @@
 import React from 'react';
 import { Avatar, Dropdown, Navbar } from 'flowbite-react';
 import logo from '../../img/logo.png'
+import { Link } from 'react-router-dom';
 const TopNavbar = () => {
     return (
         <Navbar className='border mb-12'
             fluid={true}
             rounded={true}
         >
-            <Navbar.Brand href="https://flowbite.com/">
+            <Navbar.Brand to="https://flowbite.com/">
                 <img
                     src={logo}
                     className="mr-3 h-6 sm:h-9"
                     alt="Flowbite Logo"
                 />
                 <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-                    Flowbite
+                Crumb Cooking
                 </span>
             </Navbar.Brand>
             <div className="flex md:order-2">
@@ -40,28 +41,27 @@ const TopNavbar = () => {
             </div>
             <Navbar.Collapse>
                 <Navbar.Link
-                    href="/navbars"
                     active={true}
                 >
-                    Home
+                    <Link to='/'>Home</Link>
                 </Navbar.Link>
-                <Navbar.Link href="/home">
-                    About
+                <Navbar.Link>
+                <Link to='/addService'>Add Service</Link>
+                
                 </Navbar.Link>
-                <Navbar.Link href="/about">
-                    Services
+                <Navbar.Link>
+                <Link to='/myReviews'>My Reviews</Link>
                 </Navbar.Link>
-                <Navbar.Link href="/navbars">
-                    Pricing
+                <Navbar.Link>
+                <Link to='/blog'>Blog</Link>
                 </Navbar.Link>
-                <Navbar.Link href="/contact">
-                    Contact
+                <Navbar.Link>
+                <Link to='/login'>Login</Link>
+                    
                 </Navbar.Link>
-                <Navbar.Link href="/login">
-                    Login
-                </Navbar.Link>
-                <Navbar.Link href="/logout">
-                    LogOut
+                <Navbar.Link>
+                <Link>LogOut</Link>
+                   
                 </Navbar.Link>
             </Navbar.Collapse>
         </Navbar>
