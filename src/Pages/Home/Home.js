@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+import { UserContext } from '../../Contexts/AuthProvider';
 import ServiceCard from '../Shared/ServiceCard';
 import Slider from './Slider';
 
 const Home = () => {
     const services = useLoaderData()
-    console.log(services)
+    const aut = useContext(UserContext)
+    // console.log(aut)
     return (
         <>
             <Slider></Slider>
