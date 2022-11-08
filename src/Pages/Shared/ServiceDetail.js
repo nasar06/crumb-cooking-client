@@ -8,7 +8,28 @@ const ServiceDetail = () => {
     const singleService = useLoaderData()
     const { _id, name, price, img, description, rating, published } = singleService
 
+    const handelReview = (e) => {
+        e.preventDefault()
+        const review = e.target.review.value;
+        const reviewInfo ={
+            service : _id,
+            serviceName: name,
+            review: review,
 
+            name: user?.displayName ? user?.displayName: 'No Name',
+            email: user?.email,
+        }
+        fetch(`http://localhost:5000/reviews`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(reviewInfo)
+        })
+        .then(res => res.json())
+        .then(data => console.log(data))
+        .catch(err => console.error(err))
+    }
     return (
         <div className="w-9/12 mx-auto my-12">
             <Card
@@ -85,9 +106,11 @@ const ServiceDetail = () => {
                 {
                     user?.uid ?
                         <div className='mt-8 flex'>
-                            <img style={{ width: '50px' }} src={`${user?.photoURL? user?.photoURL : 'https://www.codewithharry.com/img/user.png'}`} />
-                            <input className='w-full mx-5 border-gray rounded' type='text' placeHolder='Type your review' />
-                            <button className='px-5 py-3 font-bold text-white rounded bg-lime-600'>Submit</button>
+                            <img style={{ width: '50px' }} src={`${user?.photoURL ? user?.photoURL : 'https://www.codewithharry.com/img/user.png'}`} />
+                            <form onSubmit={handelReview} className='flex w-full'>
+                                <input className='w-full mx-5 border-gray rounded' type='text' name='review' placeHolder='Type your review' />
+                                <button className='px-5 py-3 font-bold text-white rounded bg-lime-600'>Submit</button>
+                            </form>
                         </div>
                         :
                         <Link to='/login'><button className='px-5 py-3 font-bold text-white rounded bg-lime-600'>Please Login to add  a review</button></Link>
