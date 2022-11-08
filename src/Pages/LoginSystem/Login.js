@@ -1,8 +1,27 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../../Contexts/AuthProvider';
 
 const Login = () => {
+
+    const {logIn} = useContext(UserContext)
+
+    //login with email and password
+    const handelLogin = (e) =>{
+        e.preventDefault()
+
+        const form = e.target;
+        const email = form.email.value
+        const password = form.password.value
+        
+        logIn(email, password)
+        .then(result =>{
+            console.log(result.user)
+        })
+        .catch(err => console.error(err))
+    }
+
     return (
         <div className="hero min-h-screen">
             <div className="hero-content flex-col lg:flex-row">
@@ -10,19 +29,19 @@ const Login = () => {
                     <img style={{width: '600px'}} src='https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-232.jpg?w=2000'></img>
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                    <div className="card-body">
+                    <form onSubmit={handelLogin} className="card-body">
                     <h1 className="text-4xl font-bold">Login now!</h1>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="text" placeholder="email" className="input input-bordered" />
+                            <input type="text" name='email' placeholder="email" className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="text" placeholder="password" className="input input-bordered" />
+                            <input type="text" name='password' placeholder="password" className="input input-bordered" />
                             <label className="label">
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                             </label>
@@ -36,7 +55,7 @@ const Login = () => {
                             <span className='text-slate-400'>-OR-</span>
                             <button className='border px-5 py-2 rounded-lg bg-black text-white flex items-center'><FaGithub className='mr-2' /> Github</button>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
