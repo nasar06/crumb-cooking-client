@@ -1,16 +1,18 @@
 import { Card } from 'flowbite-react';
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+import { UserContext } from '../../Contexts/AuthProvider';
 
 const ServiceDetail = () => {
+    const { user } = useContext(UserContext)
     const singleService = useLoaderData()
     const { _id, name, price, img, description, rating, published } = singleService
 
 
     return (
-        <div className="w-9/12 mx-auto">
+        <div className="w-9/12 mx-auto my-12">
             <Card
-                className='md:max-w-full'
+                className='md:max-w-none'
                 horizontal={true}
                 imgSrc={img}
             >
@@ -18,8 +20,8 @@ const ServiceDetail = () => {
                     {name}
                 </h5>
                 <span className="mr-2 ml-3 rounded bg-blue-100 px-2.5 py-0.5 text-xs font-semibold text-blue-800 dark:bg-blue-200 dark:text-blue-800">
-                        {description}
-                    </span>
+                    {description}
+                </span>
                 <div className="mt-2.5 mb-5 flex items-center">
                     <svg
                         className="h-5 w-5 text-yellow-300"
@@ -69,7 +71,7 @@ const ServiceDetail = () => {
                     </span>
                 </div>
                 <div className="flex items-center justify-between">
-                    
+
                     {/* <Link
                         to={`/serviceDetail/${_id}`}
                         className="rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -78,11 +80,20 @@ const ServiceDetail = () => {
                     </Link> */}
                 </div>
             </Card>
-            <div className='mt-8 flex'>
-                <img style={{width: '50px'}} src='https://www.codewithharry.com/img/user.png' />
-                <input className='w-full mx-5 border-gray rounded' type='text' placeHolder='Type your review' />
-                <button className='px-5 py-3 font-bold text-white rounded bg-lime-600'>Submit</button>
+
+            <div className='mt-12'>
+                {
+                    user?.uid ?
+                        <div className='mt-8 flex'>
+                            <img style={{ width: '50px' }} src='https://www.codewithharry.com/img/user.png' />
+                            <input className='w-full mx-5 border-gray rounded' type='text' placeHolder='Type your review' />
+                            <button className='px-5 py-3 font-bold text-white rounded bg-lime-600'>Submit</button>
+                        </div>
+                        :
+                        <Link to='/login'><button className='px-5 py-3 font-bold text-white rounded bg-lime-600'>Please Login to add  a review</button></Link>
+                }
             </div>
+
         </div>
     );
 };

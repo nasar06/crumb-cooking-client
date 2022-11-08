@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../Contexts/AuthProvider';
 
 
 const Register = () => {
 
     const {signUp} = useContext(UserContext)
-
+    const navigate = useNavigate()
     const handelRegister =(e)=>{
         e.preventDefault();
 
@@ -20,7 +20,7 @@ const Register = () => {
         //signUp
         signUp(email, password)
         .then(result =>{
-            console.log(result.user)
+            navigate('/')
         })
         .catch(err => console.error(err))
     }

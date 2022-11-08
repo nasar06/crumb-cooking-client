@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../Contexts/AuthProvider';
 
 const Login = () => {
 
-    const {logIn} = useContext(UserContext)
-
+    const {logIn, googleSignIn} = useContext(UserContext)
+    const navigate = useNavigate()
     //login with email and password
     const handelLogin = (e) =>{
         e.preventDefault()
@@ -17,8 +17,15 @@ const Login = () => {
         
         logIn(email, password)
         .then(result =>{
-            console.log(result.user)
+            navigate('/')
         })
+        .catch(err => console.error(err))
+    }
+
+    // google signIn
+    const handelGoogle =() =>{
+        googleSignIn()
+        .then(result=>{})
         .catch(err => console.error(err))
     }
 
@@ -51,7 +58,7 @@ const Login = () => {
                         </div>
                         <p>you have an no Account?<Link className='text-blue-700' to='/register'>pleace Register</Link></p>
                         <div className='flex justify-center items-center mt-3'>
-                            <button className='border px-5 py-2 rounded-lg bg-orange-600 text-white flex items-center'><FaGoogle className='mr-2' /> Google</button>
+                            <button onClick={handelGoogle} className='border px-5 py-2 rounded-lg bg-orange-600 text-white flex items-center'><FaGoogle className='mr-2' /> Google</button>
                             <span className='text-slate-400'>-OR-</span>
                             <button className='border px-5 py-2 rounded-lg bg-black text-white flex items-center'><FaGithub className='mr-2' /> Github</button>
                         </div>

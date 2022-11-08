@@ -1,21 +1,22 @@
 import { Card } from 'flowbite-react';
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../../Contexts/AuthProvider';
 
 const ServiceCard = ({service}) => {
+    const {user} = useContext(UserContext)
     const {_id, name, price, img, description, rating, published} =service
     return (
-        <div className="max-w-sm">
-            <Card
-                imgAlt="Apple Watch Series 7 in colors pink, silver, and black"
-                imgSrc={img}
-            >
+        <div className="max-w-sm service">
+            <div
+            className='border rounded-lg shadow-lg'>
+                <img style={{width: '100%', height: '250px', borderRadius: '8px 8px 0px 0px'}} src={img} />
                 <a>
-                    <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
+                    <h5 className="text-xl mt-3 font-semibold tracking-tight text-gray-900 dark:text-white">
                         {name}
                     </h5>
                 </a>
-                <div className="mt-2.5 mb-5 flex items-center">
+                <div className="mt-2.5 mb-5 flex items-center p-5">
                     <svg
                         className="h-5 w-5 text-yellow-300"
                         fill="currentColor"
@@ -63,9 +64,9 @@ const ServiceCard = ({service}) => {
                         {rating}
                     </span>
                 </div>
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between p-5">
                     <span className="text-3xl font-bold text-gray-900 dark:text-white">
-                        {price}
+                        ${price}
                     </span>
                     <Link
                        to={`/serviceDetail/${_id}`}
@@ -74,7 +75,7 @@ const ServiceCard = ({service}) => {
                         Details
                         </Link>
                 </div>
-            </Card>
+            </div>
         </div>
     );
 };
