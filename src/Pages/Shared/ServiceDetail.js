@@ -1,5 +1,5 @@
 import { Card } from 'flowbite-react';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { UserContext } from '../../Contexts/AuthProvider';
 
@@ -30,6 +30,14 @@ const ServiceDetail = () => {
         .then(data => console.log(data))
         .catch(err => console.error(err))
     }
+
+    // useEffect(()=>{
+    //     fetch(`http://localhost:5000/reviews/${_id}`)
+    //     .then(res => res.json())
+    //     .then(data => console.log('get review',data))
+    //     .catch(err => console.error(err))
+    // }, [_id])
+
     return (
         <div className="w-9/12 mx-auto my-12">
             <Card
