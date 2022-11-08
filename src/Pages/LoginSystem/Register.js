@@ -6,7 +6,7 @@ import { UserContext } from '../../Contexts/AuthProvider';
 
 const Register = () => {
 
-    const {signUp} = useContext(UserContext)
+    const {signUp, googleSignIn} = useContext(UserContext)
     const navigate = useNavigate()
     const handelRegister =(e)=>{
         e.preventDefault();
@@ -20,6 +20,15 @@ const Register = () => {
         //signUp
         signUp(email, password)
         .then(result =>{
+            navigate('/')
+        })
+        .catch(err => console.error(err))
+    }
+
+    //google signInd
+    const handelGoole = () =>{
+        googleSignIn()
+        .then(result=>{
             navigate('/')
         })
         .catch(err => console.error(err))
@@ -57,7 +66,7 @@ const Register = () => {
                         </div>
                         <p>Already you have an Account?<Link className='text-blue-700' to='/login'>pleace Login</Link></p>
                         <div className='flex justify-center items-center mt-3'>
-                            <button className='border px-5 py-2 rounded-lg bg-orange-600 text-white flex items-center'><FaGoogle className='mr-2' /> Google</button>
+                            <button onClick={handelGoole} className='border px-5 py-2 rounded-lg bg-orange-600 text-white flex items-center'><FaGoogle className='mr-2' /> Google</button>
                             <span className='text-slate-400'>-OR-</span>
                             <button className='border px-5 py-2 rounded-lg bg-black text-white flex items-center'><FaGithub className='mr-2' /> Github</button>
                         </div>

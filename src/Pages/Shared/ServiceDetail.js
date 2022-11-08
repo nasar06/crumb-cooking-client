@@ -85,7 +85,7 @@ const ServiceDetail = () => {
                 {
                     user?.uid ?
                         <div className='mt-8 flex'>
-                            <img style={{ width: '50px' }} src='https://www.codewithharry.com/img/user.png' />
+                            <img style={{ width: '50px' }} src={`${user?.photoURL? user?.photoURL : 'https://www.codewithharry.com/img/user.png'}`} />
                             <input className='w-full mx-5 border-gray rounded' type='text' placeHolder='Type your review' />
                             <button className='px-5 py-3 font-bold text-white rounded bg-lime-600'>Submit</button>
                         </div>

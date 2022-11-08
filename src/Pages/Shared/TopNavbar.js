@@ -34,19 +34,19 @@ const TopNavbar = () => {
                     <Dropdown
                         arrowIcon={false}
                         inline={true}
-                        label={<Avatar alt="User settings" img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded={true} />}
+                        label={<Avatar alt="User settings" img={`${user?.photoURL? user?.photoURL : 'https://www.codewithharry.com/img/user.png'}`} rounded={true} />}
                     >
                         <Dropdown.Header>
-                            <span className="block text-sm">
-                                Bonnie Green
-                            </span>
+                            {/* <span className="block text-sm">
+                                {user?.name ? user?.name : 'No Name'}
+                            </span> */}
                             <span className="block truncate text-sm font-medium">
-                                name@flowbite.com
+                                {user?.email ? user?.email : 'No email'}
                             </span>
                         </Dropdown.Header>
                         <Dropdown.Divider />
                         <Dropdown.Item>
-                            Sign out
+                             <button onClick={handelLogOut}>Sign out</button>
                         </Dropdown.Item>
                     </Dropdown>
 

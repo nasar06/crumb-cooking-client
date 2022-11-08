@@ -25,7 +25,9 @@ const Login = () => {
     // google signIn
     const handelGoogle =() =>{
         googleSignIn()
-        .then(result=>{})
+        .then(result=>{
+            navigate('/')
+        })
         .catch(err => console.error(err))
     }
 
