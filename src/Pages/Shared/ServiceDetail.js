@@ -1,6 +1,6 @@
 import { Card } from 'flowbite-react';
 import React, { useContext, useEffect, useState } from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link, Navigate, useLoaderData, useLocation } from 'react-router-dom';
 import { UserContext } from '../../Contexts/AuthProvider';
 import Review from './Review';
 //toast
@@ -17,7 +17,7 @@ const ServiceDetail = () => {
     const [postData, setPostData] = useState('')
     const { _id, name, price, img, description, rating, published } = singleService
 
-
+    const location = useLocation();
     // handel review
     const handelReview = (e) => {
         e.preventDefault()
@@ -155,7 +155,8 @@ const ServiceDetail = () => {
                                 </form>
                             </div>
                             :
-                            <Link to='/login'><button className='px-5 py-3 font-bold text-white rounded bg-lime-600'>Please Login to add  a review</button></Link>
+                            
+                            <Link to='/login' state={{from: location}} replace><button className='px-5 py-3 font-bold text-white rounded bg-lime-600'>Please Login to add  a review</button></Link>
                     }
                 </div>
             </div>

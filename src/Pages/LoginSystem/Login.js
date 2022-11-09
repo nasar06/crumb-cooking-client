@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../Contexts/AuthProvider';
 //toast
 import { ToastContainer, toast } from 'react-toastify';
@@ -9,6 +9,8 @@ import 'react-toastify/dist/ReactToastify.css';
 const Login = () => {
 
     const {logIn, googleSignIn} = useContext(UserContext)
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/'
     const navigate = useNavigate()
     //login with email and password
     const handelLogin = (e) =>{
@@ -21,7 +23,7 @@ const Login = () => {
         logIn(email, password)
         .then(result =>{
             toast('login successfully')
-            navigate('/')
+            navigate(from, {replace: true})
         })
         .catch(err => console.error(err))
     }
