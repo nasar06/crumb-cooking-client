@@ -14,7 +14,7 @@ const ServiceDetail = () => {
     const { user } = useContext(UserContext)
     const singleService = useLoaderData()
     const [Sreviews, setSreviews] = useState();
-    const [postData, setPostData] = useState('false')
+    const [postData, setPostData] = useState('')
     const { _id, name, price, img, description, rating, published } = singleService
 
 
@@ -43,7 +43,7 @@ const ServiceDetail = () => {
         })
             .then(res => res.json())
             .then(data => {
-                setPostData(data.acknowledged)
+                setPostData(data.insertedId)
                 toast("Review added successfully")
                 console.log('post done', data)
             })
