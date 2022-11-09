@@ -2,6 +2,9 @@ import React, { useContext } from 'react';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../Contexts/AuthProvider';
+//toast
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
 
@@ -17,6 +20,7 @@ const Login = () => {
         
         logIn(email, password)
         .then(result =>{
+            toast('login successfully')
             navigate('/')
         })
         .catch(err => console.error(err))
@@ -26,6 +30,7 @@ const Login = () => {
     const handelGoogle =() =>{
         googleSignIn()
         .then(result=>{
+            toast('login successfully')
             navigate('/')
         })
         .catch(err => console.error(err))
@@ -67,6 +72,7 @@ const Login = () => {
                     </form>
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 };
