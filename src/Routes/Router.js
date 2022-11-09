@@ -6,6 +6,7 @@ import Home from "../Pages/Home/Home";
 import Login from "../Pages/LoginSystem/Login";
 import Register from "../Pages/LoginSystem/Register";
 import MyReviews from "../Pages/MyReviews/MyReviews";
+import NotFound from "../Pages/NotFound";
 import Services from "../Pages/Services/Services";
 import ServiceDetail from "../Pages/Shared/ServiceDetail";
 import PrivetRoute from "./PrivetRoute";
@@ -51,5 +52,9 @@ export const router = createBrowserRouter([
                 element: <Blog></Blog>
             }
         ]
+    },
+    {
+        path: '*',
+        element: <NotFound></NotFound>
     }
 ])

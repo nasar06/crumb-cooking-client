@@ -14,7 +14,7 @@ const SpecialsOffer = () => {
                     <p className="font-bold text-gray-600 text-left"># Recording starts with the patter of a summer.</p>
                     <p className="font-bold text-gray-600 text-left"># Drifting tone like that of a not-quite-tuned.</p>
                     <p className="font-bold text-gray-600 text-left"># Station rises and for a while drowns out the.</p>
-                    <button className="btn btn-primary">Order Now</button>
+                    <button className="btn btn-primary mt-3">Order Now</button>
                 </div>
             </div>
         </div>
