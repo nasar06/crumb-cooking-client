@@ -20,7 +20,7 @@ const MyReviews = () => {
     return (
         <div>
             <div
-                className="overflow-x-auto">
+                className="overflow-x-auto my-12">
                 <table className="table table-zebra w-full">
 
                     <thead>

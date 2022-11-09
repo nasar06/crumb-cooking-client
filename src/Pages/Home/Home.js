@@ -1,7 +1,9 @@
 import React, { useContext } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import ServiceCard from '../Shared/ServiceCard';
+import FoodAbout from './FoodAbout';
 import Slider from './Slider';
+import SpecialsOffer from './SpecialsOffer';
 
 const Home = () => {
     const services = useLoaderData()
@@ -20,6 +22,8 @@ const Home = () => {
                 </div>
                 <Link to='/services'><button className='mt-8 px-5 py-3 font-bold text-white rounded bg-lime-600'>See All</button></Link>
             </div>
+            <FoodAbout></FoodAbout>
+            <SpecialsOffer></SpecialsOffer>
         </>
 
     );
