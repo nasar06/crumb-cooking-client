@@ -33,7 +33,7 @@ const Login = () => {
         googleSignIn()
         .then(result=>{
             toast('login successfully')
-            navigate('/')
+            navigate(from, {replace: true})
         })
         .catch(err => console.error(err))
     }
