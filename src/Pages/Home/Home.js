@@ -4,11 +4,15 @@ import ServiceCard from '../Shared/ServiceCard';
 import FoodAbout from './FoodAbout';
 import Slider from './Slider';
 import SpecialsOffer from './SpecialsOffer';
+import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
     const services = useLoaderData()
     return (
         <>
+            <Helmet>
+                <title>Home</title>
+            </Helmet>
             <Slider></Slider>
             <div className='my-24'>
                 <h1 className='text-5xl mb-12 font-bold'>My Services</h1>

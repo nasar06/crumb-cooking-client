@@ -9,6 +9,9 @@ import 'react-toastify/dist/ReactToastify.css';
 //photo view
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
+import { Helmet } from 'react-helmet-async';
+
+
 
 const ServiceDetail = () => {
     const { user } = useContext(UserContext)
@@ -34,7 +37,7 @@ const ServiceDetail = () => {
 
         e.target.reset()
         //Post review
-        fetch(`http://localhost:5000/reviews`, {
+        fetch(`https://crumb-cooking-server-pbvo3twxb-nasar06.vercel.app/reviews`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -50,9 +53,10 @@ const ServiceDetail = () => {
             .catch(err => console.error(err))
     }
 
+
     //get all reviews for this service
     useEffect(() => {
-        fetch(`http://localhost:5000/review/${_id}`)
+        fetch(`https://crumb-cooking-server-pbvo3twxb-nasar06.vercel.app/review/${_id}`)
             .then(res => res.json())
             .then(data => {
                 console.log('get review', data)
@@ -65,6 +69,9 @@ const ServiceDetail = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Service Details</title>
+            </Helmet>
             <div className="w-9/12 mx-auto my-12 text-center">
                 <ToastContainer />
                 <PhotoProvider>
@@ -155,8 +162,8 @@ const ServiceDetail = () => {
                                 </form>
                             </div>
                             :
-                            
-                            <Link to='/login' state={{from: location}} replace><button className='px-5 py-3 font-bold text-white rounded bg-lime-600'>Please Login to add  a review</button></Link>
+
+                            <Link to='/login' state={{ from: location }} replace><button className='px-5 py-3 font-bold text-white rounded bg-lime-600'>Please Login to add  a review</button></Link>
                     }
                 </div>
             </div>
