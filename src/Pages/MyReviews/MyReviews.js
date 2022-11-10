@@ -38,7 +38,7 @@ const MyReviews = () => {
             })
             .catch(err => console.log(err))
     }
-    
+
 
     return (
         <div>

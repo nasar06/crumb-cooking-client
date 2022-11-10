@@ -2,6 +2,8 @@ import { Button, Label, TextInput } from 'flowbite-react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Helmet } from 'react-helmet-async';
+import moment from 'moment';
+
 
 const AddServices = () => {
 
@@ -15,6 +17,7 @@ const AddServices = () => {
         const description = form.description.value;
         const rating = form.rating.value;
         const published = form.published.value;
+        const time = moment().format('Do MM YYYY, h:mm:ss a')
         //set service object
         const serviceInfo = {
             name,
@@ -22,7 +25,8 @@ const AddServices = () => {
             price,
             description,
             rating,
-            published
+            published,
+            time
         }
         form.reset()
         //add service
@@ -48,6 +52,9 @@ const AddServices = () => {
             <Helmet>
                 <title>Add service</title>
             </Helmet>
+            <div>
+            {moment().format('Do MM YYYY, h:mm:ss a')}
+            </div>
             <div className='w-6/12 mx-auto mb-12'>
                 <h1 className='text-4xl font-bold mb-8 text-lime-500'>Add Your Service</h1>
                 <form onSubmit={handelAddService} className="flex flex-col gap-4">
