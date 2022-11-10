@@ -14,7 +14,7 @@ const MyReviews = () => {
 
         //get all review by email
     useEffect(() => {
-        fetch(`https://crumb-cooking-server-pbvo3twxb-nasar06.vercel.app/myReviews?email=${user?.email}`)
+        fetch(`https://crumb-cooking-server-nasar06.vercel.app/myReviews?email=${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setMyReview(data)
@@ -25,7 +25,7 @@ const MyReviews = () => {
 
     //review delete
     const handelDelete = (id) => {
-        fetch(`https://crumb-cooking-server-pbvo3twxb-nasar06.vercel.app/review/${id}`, {
+        fetch(`https://crumb-cooking-server-nasar06.vercel.app/review/${id}`, {
             method: 'DELETE',
         })
             .then(res => res.json())

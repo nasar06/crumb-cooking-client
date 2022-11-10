@@ -30,7 +30,7 @@ const AddServices = () => {
         }
         form.reset()
         //add service
-        fetch('https://crumb-cooking-server-pbvo3twxb-nasar06.vercel.app/services', {
+        fetch('https://crumb-cooking-server-nasar06.vercel.app/services', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

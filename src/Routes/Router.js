@@ -20,17 +20,17 @@ export const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader: ()=> fetch(`https://crumb-cooking-server-pbvo3twxb-nasar06.vercel.app/services?size=${3}`)
+                loader: ()=> fetch(`https://crumb-cooking-server-nasar06.vercel.app/services?size=${3}`)
             },
             {
                 path: '/services',
                 element: <Services></Services>,
-                loader: ()=> fetch(`https://crumb-cooking-server-pbvo3twxb-nasar06.vercel.app/services?size=${100}`)
+                loader: ()=> fetch(`https://crumb-cooking-server-nasar06.vercel.app/services?size=${100}`)
             },
             {
                 path: '/serviceDetail/:id',
                 element: <ServiceDetail></ServiceDetail>,
-                loader: ({params})=> fetch(`https://crumb-cooking-server-pbvo3twxb-nasar06.vercel.app/serviceDetail/${params.id}`)
+                loader: ({params})=> fetch(`https://crumb-cooking-server-nasar06.vercel.app/serviceDetail/${params.id}`)
             },
             {
                 path: '/login',
@@ -55,7 +55,7 @@ export const router = createBrowserRouter([
             {
                 path: '/reviewEdit/:id',
                 element: <ReviewEdit></ReviewEdit>,
-                loader: ({params}) => fetch(`https://crumb-cooking-server-pbvo3twxb-nasar06.vercel.app/reviewEdit/${params.id}`)
+                loader: ({params}) => fetch(`https://crumb-cooking-server-nasar06.vercel.app/reviewEdit/${params.id}`)
             }
         ]
     },

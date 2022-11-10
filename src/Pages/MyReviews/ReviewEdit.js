@@ -20,7 +20,7 @@ const ReviewEdit = () => {
         }
         console.log(dataInfo)
 
-        fetch(`https://crumb-cooking-server-pbvo3twxb-nasar06.vercel.app/reviewEdit/${_id}`, {
+        fetch(`https://crumb-cooking-server-nasar06.vercel.app/reviewEdit/${_id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'

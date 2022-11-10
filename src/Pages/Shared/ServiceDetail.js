@@ -37,7 +37,7 @@ const ServiceDetail = () => {
 
         e.target.reset()
         //Post review
-        fetch(`https://crumb-cooking-server-pbvo3twxb-nasar06.vercel.app/reviews`, {
+        fetch(`https://crumb-cooking-server-nasar06.vercel.app/reviews`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -56,7 +56,7 @@ const ServiceDetail = () => {
 
     //get all reviews for this service
     useEffect(() => {
-        fetch(`https://crumb-cooking-server-pbvo3twxb-nasar06.vercel.app/review/${_id}`)
+        fetch(`https://crumb-cooking-server-nasar06.vercel.app/review/${_id}`)
             .then(res => res.json())
             .then(data => {
                 console.log('get review', data)
