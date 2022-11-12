@@ -25,7 +25,25 @@ const Login = () => {
         logIn(email, password)
             .then(result => {
                 toast('login successfully')
-                navigate(from, { replace: true })
+                
+                const userInfo = {
+                    email: result.user.email
+                }
+                //jwt
+                fetch('https://crumb-cooking-server.vercel.app/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(userInfo)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                        localStorage.setItem('token', data.token)
+                        navigate(from, { replace: true })
+                    })
+                    .catch(err => console.error(err))
             })
             .catch(err => console.error(err))
     }
@@ -65,7 +83,7 @@ const Login = () => {
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="text" name='password' placeholder="password" className="input input-bordered" />
+                                <input type="password" name='password' placeholder="password" className="input input-bordered" />
                                 <label className="label">
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>

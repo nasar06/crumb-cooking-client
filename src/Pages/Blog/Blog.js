@@ -8,7 +8,8 @@ const Blog = () => {
             <Helmet>
                 <title>Blog</title>
             </Helmet>
-            <Accordion className='my-24'>
+            <h1 className='text-4xl text-lime-500 font-bold my-12'>BLOG</h1>
+            <Accordion className='mb-24'>
                 <Accordion.Panel>
                     <Accordion.Title>
                         Difference between SQL and NoSQL?

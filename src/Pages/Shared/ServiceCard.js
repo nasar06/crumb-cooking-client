@@ -9,7 +9,7 @@ const ServiceCard = ({service}) => {
     return (
         <div className="max-w-sm service">
             <div
-            className='border rounded-lg shadow-lg'>
+            className='border rounded-lg shadow-lg' style={{height: '490px'}}>
                 <img style={{width: '100%', height: '250px', borderRadius: '8px 8px 0px 0px'}} src={img} />
                 <a>
                     <h5 className="text-xl mt-3 font-semibold tracking-tight text-gray-900 dark:text-white">

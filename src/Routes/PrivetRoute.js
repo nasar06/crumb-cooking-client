@@ -5,7 +5,7 @@ import { UserContext } from '../Contexts/AuthProvider';
 
 const PrivetRoute = ({ children }) => {
     const { user, loader } = useContext(UserContext)
-
+    console.log('user.......',user)
     if (loader) {
         return <div className="text-center text-3xl">
             <Spinner aria-label="Center-aligned spinner example" />

@@ -6,7 +6,7 @@ const Footer = () => {
         <footer className="footer p-10 bg-black text-white">
             <div>
                 <img style={{width: '70px'}} src={logo} />
-                <p>Crumb Cooking</p>
+                <p className='text-2xl font-bold text-lime-500'>Crumb Cooking</p>
             </div>
             <div>
                 <span className="footer-title">Services</span>

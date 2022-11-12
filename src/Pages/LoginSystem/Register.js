@@ -9,7 +9,7 @@ import { Helmet } from 'react-helmet-async';
 
 const Register = () => {
 
-    const { signUp, googleSignIn } = useContext(UserContext)
+    const { signUp, googleSignIn, handelSignOut } = useContext(UserContext)
     const navigate = useNavigate()
     const handelRegister = (e) => {
         e.preventDefault();
@@ -24,7 +24,10 @@ const Register = () => {
         signUp(email, password)
             .then(result => {
                 toast('signUp successfully')
-                navigate('/')
+                handelSignOut()
+                    .then(() => { })
+                    .catch(err => console.error(err))
+                navigate('/login')
             })
             .catch(err => console.error(err))
     }

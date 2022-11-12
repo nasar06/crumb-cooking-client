@@ -10,6 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 import { Helmet } from 'react-helmet-async';
+import moment from 'moment';
 
 
 
@@ -26,6 +27,7 @@ const ServiceDetail = () => {
         e.preventDefault()
         //set review data
         const review = e.target.review.value;
+        const time = moment().format('Do MM YYYY, h:mm:ss a')
         const reviewInfo = {
             service: _id,
             serviceName: name,
@@ -33,11 +35,12 @@ const ServiceDetail = () => {
             name: user?.displayName ? user?.displayName : 'No Name',
             email: user?.email,
             photoURL: user?.photoURL ? user?.photoURL : 'https://www.codewithharry.com/img/user.png',
+            time 
         }
 
         e.target.reset()
         //Post review
-        fetch(`https://crumb-cooking-server-nasar06.vercel.app/reviews`, {
+        fetch(`https://crumb-cooking-server.vercel.app/reviews`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -56,7 +59,7 @@ const ServiceDetail = () => {
 
     //get all reviews for this service
     useEffect(() => {
-        fetch(`https://crumb-cooking-server-nasar06.vercel.app/review/${_id}`)
+        fetch(`https://crumb-cooking-server.vercel.app/review/${_id}`)
             .then(res => res.json())
             .then(data => {
                 console.log('get review', data)

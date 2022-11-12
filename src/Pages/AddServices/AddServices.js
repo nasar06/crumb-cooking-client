@@ -30,7 +30,7 @@ const AddServices = () => {
         }
         form.reset()
         //add service
-        fetch('https://crumb-cooking-server-nasar06.vercel.app/services', {
+        fetch('https://crumb-cooking-server.vercel.app/services', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -53,7 +53,6 @@ const AddServices = () => {
                 <title>Add service</title>
             </Helmet>
             <div>
-            {moment().format('Do MM YYYY, h:mm:ss a')}
             </div>
             <div className='w-6/12 mx-auto mb-12'>
                 <h1 className='text-4xl font-bold mb-8 text-lime-500'>Add Your Service</h1>
@@ -69,7 +68,7 @@ const AddServices = () => {
                             name='name'
                             id="name"
                             type="text"
-                            placeholder="Type your service name"
+                            placeholder="type your service name"
                             required={true}
                         />
                     </div>
@@ -149,9 +148,7 @@ const AddServices = () => {
                         />
                     </div>
 
-                    <Button className='bg-lime-500' type="submit">
-                        Submit
-                    </Button>
+                    <button type='submit' className='btn bg-lime-500'>Add Service</button>
                 </form>
                 <ToastContainer />
             </div>

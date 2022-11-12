@@ -25,7 +25,7 @@ const TopNavbar = () => {
                     className="mr-3 h-6 sm:h-9"
                     alt="Flowbite Logo"
                 />
-                <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
+                <span className="self-center whitespace-nowrap text-xl font-bold text-lime-500 dark:text-white">
                     Crumb Cooking
                 </span>
             </Navbar.Brand>

@@ -5,9 +5,15 @@ import FoodAbout from './FoodAbout';
 import Slider from './Slider';
 import SpecialsOffer from './SpecialsOffer';
 import { Helmet } from 'react-helmet-async';
+import { UserContext } from '../../Contexts/AuthProvider';
 
 const Home = () => {
+    const {loader} =useContext(UserContext)
     const services = useLoaderData()
+    console.log(loader)
+    if(loader){
+      return  <h1>Loading.....</h1>
+    }
     return (
         <>
             <Helmet>

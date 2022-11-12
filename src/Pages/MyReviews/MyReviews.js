@@ -8,24 +8,33 @@ import { Helmet } from 'react-helmet-async';
 
 const MyReviews = () => {
 
-    const { user } = useContext(UserContext)
-    const [myReview, setMyReview] = useState()
+    const { user, handelSignOut } = useContext(UserContext)
+    const [myReview, setMyReview] = useState([])
 
 
         //get all review by email
     useEffect(() => {
-        fetch(`https://crumb-cooking-server-nasar06.vercel.app/myReviews?email=${user?.email}`)
-            .then(res => res.json())
+        fetch(`https://crumb-cooking-server.vercel.app/myReviews?email=${user?.email}`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+            .then(res => {
+                if(res.status === 401 || res.status === 403){
+                    handelSignOut()
+                }
+                return res.json()
+            })
             .then(data => {
                 setMyReview(data)
             })
             .catch(err => console.error(err))
-    }, [])
+    }, [user?.email])
 
 
     //review delete
     const handelDelete = (id) => {
-        fetch(`https://crumb-cooking-server-nasar06.vercel.app/review/${id}`, {
+        fetch(`https://crumb-cooking-server.vercel.app/review/${id}`, {
             method: 'DELETE',
         })
             .then(res => res.json())
