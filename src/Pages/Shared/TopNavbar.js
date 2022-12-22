@@ -15,7 +15,7 @@ const TopNavbar = () => {
         .catch(err => console.error(err))
     }
     return (
-        <Navbar className='border mb-12'
+        <Navbar className='border-b-2 mb-16'
             fluid={true}
             rounded={true}
         >
